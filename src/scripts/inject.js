@@ -1,8 +1,21 @@
 (function blockTube() {
+
+  // good code practice
   'use strict';
+  
+  // to check if object have that property
   const has = Object.prototype.hasOwnProperty;
 
-  // Thanks to uBlock origin
+
+  // This function appears to be used for trapping property access and modification within a JavaScript object hierarchy.
+  //
+  // The primary purpose of this function is to trap (intercept) property access 
+  // and modification within an object hierarchy specified by the `chain` argument.
+  // `chain` specifies object hierarchy
+  //
+  // PIECE OF HORSE SHIT, SHIPPING FOR NOW
+  //
+  // Thanks to uBlock origin {comment by author}
   const defineProperty = function(chain, cValue, middleware = undefined) {
     let aborted = false;
     const mustAbort = function(v) {
@@ -15,6 +28,8 @@
     };
     // https://github.com/uBlockOrigin/uBlock-issues/issues/156
     //   Support multiple trappers for the same property.
+    //
+    // trapProp is used to trap a single property within an object.
     const trapProp = function(owner, prop, configurable, handler) {
       if ( handler.init(owner[prop]) === false ) { return; }
       const odesc = Object.getOwnPropertyDescriptor(owner, prop);
@@ -30,12 +45,14 @@
       }
       Object.defineProperty(owner, prop, {
         configurable,
+        //When a property is accessed (get), the custom getter function is called.
         get() {
           if ( prevGetter !== undefined ) {
             prevGetter();
           }
           return handler.getter(); // cValue
         },
+        // When a property is modified (set), the custom setter function is called.
         set(a) {
           if ( prevSetter !== undefined ) {
             prevSetter(a);
@@ -44,6 +61,8 @@
         }
       });
     };
+
+    // trapChain is used to recursively trap properties along a chain of properties (e.g., object1.object2.property).
     const trapChain = function(owner, chain) {
       const pos = chain.indexOf('.');
       if ( pos === -1 ) {
@@ -58,6 +77,7 @@
             return cValue;
           },
           setter: function(a) {
+            // Middleware is called when a property is set, allowing additional processing or validation of the new value.
             if (middleware instanceof Function) {
               cValue = a;
               middleware(a);
@@ -98,19 +118,31 @@
 
   // !! Globals
 
+  // This global variable is a boolean flag used to track whether a reload of the webpage is required. 
+  // It can be used to trigger a reload when certain conditions are met.
   window.btReloadRequired = false;
 
   // extension storageData
   let storageData;
 
   // JavaScript filtering
+  //  jsFilter may represent a filter function or configuration related to JavaScript content
   let jsFilter;
+
+  // jsFilterEnabled is a boolean flag that indicates whether JavaScript filtering is enabled or disabled.
   let jsFilterEnabled = false;
 
-  // TODO: hack for blocking data in other objects
+
+
+  // TODO: hack for blocking data in other objects - {comment bu author}
+
+  //This variable is likely used as a flag to track whether a block or filter operation is currently in progress.
   let currentBlock = false;
 
-  // add context menu to following objects
+  // add context menu to following objects - {comment by the author}
+  //
+  // This is an array containing the names of objects for which a context menu should be added. 
+  // Context menus are often used to provide additional options when right-clicking on elements in a webpage.
   const contextMenuObjects = [
     'backstagePostRenderer',
     'postRenderer',
@@ -125,7 +157,10 @@
     'reelItemRenderer'
   ];
 
-  // those properties can be safely deleted when one of thier child got filtered
+  // those properties can be safely deleted when one of thier child got filtered- {comment by the author}
+  //
+  // This array contains the names of properties that can be safely deleted when one of their child properties is filtered or blocked. 
+  // It likely specifies properties that can be removed from an object when they are no longer needed.
   const deleteAllowed = [
     'richItemRenderer',
     'content',
@@ -139,7 +174,10 @@
     'commentThreadRenderer',
   ];
 
-  // those filter properties require RegExp checking
+  // those filter properties require RegExp checking- {comment by the author}
+  //
+  // This array contains the names of properties that require regular expression (RegExp) checking. 
+  // These properties likely need special handling when filtering or matching content based on regular expressions.
   const regexProps = [
     'videoId',
     'channelId',
@@ -148,10 +186,28 @@
     'comment',
   ];
 
-  // TODO: add rules descriptions
-  // !! Filter Rules definitions
+  // TODO: add rules descriptions- {comment by the author}
+  // !! Filter Rules definitions- {comment by the author}
+  //
+  // These objects define rules for filtering content on webpages. 
+  // They specify how to match and filter content based on different properties of elements. 
+  // baseRules appears to define basic filtering rules, 
+  // while filterRules likely contains more specific rules for different types of content.
   const baseRules = {
     videoId: 'videoId',
+
+    //  still dont know what this weired lines does, most probably, yeh {NOT SURE}
+    // shortBylineText: This is likely a property or object that represents the short byline text of some content, 
+    // such as a video or post. The shortBylineText property may contain multiple properties of its own.
+
+    // runs: This is likely a property within the shortBylineText object that represents an array of runs of text. 
+    // Each run may have its own properties.
+    // navigationEndpoint: This is likely a property within one of the runs that represents a navigation endpoint. 
+    // A navigation endpoint typically contains information about where a user should be directed when clicking on a link or element.
+    // browseEndpoint: This is likely a property within the navigationEndpoint object that further specifies the browsing endpoint. 
+    // It may contain additional information about the destination of the navigation.
+    // browseId: This is likely a property within the browseEndpoint object that represents an identifier, such as a unique ID or key, associated with the destination of the navigation. 
+    // This ID is often used to identify a specific resource, such as a YouTube channel or video.
     channelId: 'shortBylineText.runs.navigationEndpoint.browseEndpoint.browseId',
     channelBadges: 'ownerBadges',
     channelName: [
@@ -246,7 +302,7 @@
         customFunc: redirectToNext,
       },
 
-      // channel page header
+      // channel page header- {comment by the author}
       c4TabbedHeaderRenderer: {
         properties: {
           channelId: 'channelId',
@@ -255,7 +311,7 @@
         customFunc: redirectToIndex,
       },
 
-      // related channels
+      // related channels- {comment by the author}
       gridChannelRenderer: {
         channelId: 'channelId',
         channelName: 'title.simpleText',
@@ -266,7 +322,7 @@
         channelName: 'title.runs',
       },
 
-      // sidemenu subscribed channels
+      // sidemenu subscribed channels- {comment by the author}
       guideEntryRenderer: {
         channelId: 'navigationEndpoint.browseEndpoint.browseId',
         channelName: ['title', 'formattedTitle.simpleText'],
@@ -354,7 +410,7 @@
       }
     },
     guide: {
-      // sidemenu subscribed channels
+      // sidemenu subscribed channels- {comment by the author}
       guideEntryRenderer: {
         properties: {
           channelId: ['navigationEndpoint.browseEndpoint.browseId', 'icon.iconType'],
@@ -375,19 +431,36 @@
       },
     }
   }
-
+  // This variable represents a merged set of filtering rules. 
+  // It combines rules from filterRules.main and filterRules.comments, 
+  // likely to apply filtering rules to both main content and comments on webpages.
   const mergedFilterRules = Object.assign(filterRules.main, filterRules.comments);
 
   // !! ObjectFilter
+  //
+  // here the author made a constructor function, which take below args and 
   function ObjectFilter(object, filterRules, postActions = [], contextMenus = false) {
-    if (!(this instanceof ObjectFilter))
-      return new ObjectFilter(object, filterRules, postActions, contextMenus);
 
+    // `this` (the object being constructed) 
+
+    // ensure that the constructor is called with the new keyword, warna kabhi kabhi gand lagg jaati h
+    if (!(this instanceof ObjectFilter))
+  
+      // if not made using new keyword, end this function and make it again using new keyword.
+      return new ObjectFilter(object, filterRules, postActions, contextMenus);
+    
+    // jo bhi object isko inherit krega, uski properties below ke hisab se set ho jayegi
     this.object = object;
     this.filterRules = filterRules;
     this.contextMenus = contextMenus;
 
+    // here is some sort of filter, will see to it later. {CONFUSED}
     this.filter();
+
+    // `postActions` is an array that contains a list of functions. 
+    //
+    // These functions are intended to be executed as post-processing actions after some operation, 
+    // possibly after filtering the object.
     postActions.forEach(x => x.call(this));
     return this;
   }
