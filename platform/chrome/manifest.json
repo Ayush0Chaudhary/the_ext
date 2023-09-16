@@ -1,7 +1,7 @@
 {
-  "name": "BlockTube",
+  "name": "JeeTube",
   "version": "{EXT_VERSION}",
-  "description": "YouTube™ content blocker",
+  "description": "YouTube™ for Jee Student",
   "manifest_version": 2,
   "content_scripts": [
     {
@@ -13,7 +13,7 @@
   ],
   "web_accessible_resources": ["src/scripts/inject.js"],
   "browser_action": {
-    "default_title": "BlockTube Options",
+    "default_title": "JeeTube Options",
     "default_icon": {
       "16": "assets/icons/16.png",
       "48": "assets/icons/48.png",
@@ -35,6 +35,5 @@
     "16": "assets/icons/16.png",
     "48": "assets/icons/48.png",
     "128": "assets/icons/128.png"
-  },
-  "homepage_url": "https://github.com/amitbl/blocktube"
+  }
 }

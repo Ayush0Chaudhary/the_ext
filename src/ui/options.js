@@ -228,7 +228,7 @@
           saveForm();
         }
       } catch (ex) {
-        alert('This is not a valid BlockTube backup');
+        alert('This is not a valid JeeTube backup');
       }
     };
     reader.readAsText(f);

@@ -132,8 +132,6 @@
   // jsFilterEnabled is a boolean flag that indicates whether JavaScript filtering is enabled or disabled.
   let jsFilterEnabled = false;
 
-
-
   // TODO: hack for blocking data in other objects - {comment bu author}
 
   //This variable is likely used as a flag to track whether a block or filter operation is currently in progress.
@@ -436,6 +434,38 @@
   // likely to apply filtering rules to both main content and comments on webpages.
   const mergedFilterRules = Object.assign(filterRules.main, filterRules.comments);
 
+  const sd = {
+    filterData : {
+      channelId: [], 
+      channelName : [
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(jee)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(maths)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(physics)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chem)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chemical)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+      ],
+      comment: [],
+      javascript : "(video, objectType) => {\n  // Add custom conditions below\n\n  // Custom conditions did not match, do not block\n  return false;\n}",
+      title: [],
+      vidLength: [null, null],
+      videoId: []
+    },
+    options : {
+      autoplay: false,
+      block_feedback: false,
+      block_message: "Padhle bhai, inn sab me kuch ni rakha",
+      disable_db_normalize: false,
+      disable_you_there: false,
+      enable_javascript: false,
+      mixes: false,
+      movies: false,
+      shorts: false,
+      suggestions_only: false,
+      trending: false,
+      vidLength_type: "allow",
+    }
+  }
+
   // !! ObjectFilter
   //
   // here the author made a constructor function, which take below args and 
@@ -453,7 +483,8 @@
     this.object = object;
     this.filterRules = filterRules;
     this.contextMenus = contextMenus;
-
+    console.log(storageData);
+    console.log(sd);
     // here is some sort of filter, will see to it later. {CONFUSED}
     this.filter();
 
@@ -466,14 +497,14 @@
   }
 
   ObjectFilter.prototype.isDataEmpty = function () {
-    if (storageData.options.shorts || storageData.options.movies || storageData.options.mixes) return false;
-    if (!isNaN(storageData.options.percent_watched_hide)) return false;
+    if (sd.options.shorts || sd.options.movies || sd.options.mixes) return false;
+    if (!isNaN(sd.options.percent_watched_hide)) return false;
 
-    if (!isNaN(storageData.filterData.vidLength[0]) ||
-        !isNaN(storageData.filterData.vidLength[1])) return false;
+    if (!isNaN(sd.filterData.vidLength[0]) ||
+        !isNaN(sd.filterData.vidLength[1])) return false;
 
     for (let idx = 0; idx < regexProps.length; idx += 1) {
-      if (storageData.filterData[regexProps[idx]].length > 0) return false;
+      if (sd.filterData[regexProps[idx]].length > 0) return false;
     }
 
     return !jsFilterEnabled;
@@ -486,7 +517,7 @@
       const filterPath = filters[h];
       if (filterPath === undefined) return false;
 
-      const properties = storageData.filterData[h];
+      const properties = sd.filterData[h];
       if (regexProps.includes(h) && (properties === undefined || properties.length === 0 && !jsFilterEnabled)) return false;
 
       const filterPathArr = filterPath instanceof Array ? filterPath : [filterPath];
@@ -498,9 +529,9 @@
 
       if (value === undefined) return false;
 
-      if (h === 'percentWatched' && storageData.options.percent_watched_hide && objectType != 'playlistPanelVideoRenderer'
+      if (h === 'percentWatched' && sd.options.percent_watched_hide && objectType != 'playlistPanelVideoRenderer'
            && !['/feed/history', '/feed/library', '/playlist'].includes(document.location.pathname)
-           && parseInt(value) >= storageData.options.percent_watched_hide) return true;
+           && parseInt(value) >= sd.options.percent_watched_hide) return true;
 
       // badges are also arrays, but they're processed later on.
       if (!(h === 'channelBadges' || h === 'badges') && value instanceof Array) {
@@ -511,11 +542,11 @@
 
       if (h === 'vidLength') {
         const vidLen = parseTime(value);
-        if (vidLen === -2 && storageData.options.shorts) {
+        if (vidLen === -2 && sd.options.shorts) {
           return true;
         }
         if (vidLen > 0 && properties.length === 2) {
-          if (storageData.options.vidLength_type === 'block') {
+          if (sd.options.vidLength_type === 'block') {
             if ((properties[0] !== null && vidLen >= properties[0]) && (properties[1] !== null && vidLen <= properties[1])) return true;
           } else {
             if ((properties[0] !== null && vidLen < properties[0]) || (properties[1] !== null && vidLen > properties[1])) return true;
@@ -562,12 +593,12 @@
   };
 
   ObjectFilter.prototype.isExtendedMatched = function(filteredObject, h) {
-    if (storageData.options.movies) {
+    if (sd.options.movies) {
       if (h === 'movieRenderer' || h === 'compactMovieRenderer') return true;
       if (h === 'videoRenderer' && !getObjectByPath(filteredObject, "shortBylineText.runs.navigationEndpoint.browseEndpoint") && filteredObject.longBylineText && filteredObject.badges) return true;
     }
-    if (storageData.options.shorts && h === 'reelItemRenderer') return true;
-    if (storageData.options.mixes && (h === 'radioRenderer' || h === 'compactRadioRenderer')) return true;
+    if (sd.options.shorts && h === 'reelItemRenderer') return true;
+    if (sd.options.mixes && (h === 'radioRenderer' || h === 'compactRadioRenderer')) return true;
 
     return false;
   }
@@ -594,7 +625,7 @@
         }
 
         const isMatch = this.isExtendedMatched(filteredObject, h) || this.matchFilterData(properties, filteredObject, h);
-        if (isMatch) {
+        if (!isMatch) {
           res.push({
             name: h,
             customFunc,
@@ -673,7 +704,7 @@
   // !! Custom filtering functions
 
   function disableEmbedPlayer(ytData) {
-    if (storageData.options.suggestions_only) {
+    if (sd.options.suggestions_only) {
       return false;
     }
 
@@ -682,11 +713,11 @@
   }
 
   function disablePlayer(ytData) {
-    if (storageData.options.suggestions_only) {
+    if (sd.options.suggestions_only) {
       return false;
     }
 
-    const message = (storageData.options.block_message) || '';
+    const message = (sd.options.block_message) || '';
     for (const prop of Object.getOwnPropertyNames(ytData)) {
       try {
         delete ytData[prop];
@@ -719,7 +750,7 @@
 
   function blockPlaylistVid(pl) {
     const vid = pl.playlistPanelVideoRenderer;
-    const message = (storageData.options.block_message) || '';
+    const message = (sd.options.block_message) || '';
 
     vid.videoId = 'undefined';
 
@@ -740,7 +771,7 @@
   }
 
   function redirectToIndex() {
-    if (storageData && storageData.options.suggestions_only) {
+    if (sd && sd.options.suggestions_only) {
       return false;
     }
 
@@ -765,7 +796,7 @@
   function redirectToNext() {
     currentBlock = false;
 
-    if (storageData.options.suggestions_only) {
+    if (sd.options.suggestions_only) {
       return false;
     }
 
@@ -784,7 +815,7 @@
     if (isPlaylist) return;
 
     const secondary = getObjectByPath(twoColumn, 'secondaryResults');
-    if (storageData.options.autoplay !== true) {
+    if (sd.options.autoplay !== true) {
       secondary.secondaryResults = undefined;
       return;
     }
@@ -900,7 +931,7 @@
     let start_obj = getObjectByPath(this.object, 'args.raw_player_response');
     start_obj = (start_obj) ? start_obj : this.object;
 
-    if (storageData.options.disable_you_there === true) {
+    if (sd.options.disable_you_there === true) {
       const playerMessages = getObjectByPath(start_obj, 'messages', []);
       for (let i = playerMessages.length - 1; i >= 0; i -= 1) {
         if (has.call(playerMessages[i], 'youThereRenderer')) {
@@ -909,7 +940,7 @@
       }
     }
 
-    if (storageData.options.disable_db_normalize === true) {
+    if (sd.options.disable_db_normalize === true) {
       const audioConfig = getObjectByPath(start_obj, 'playerConfig.audioConfig');
       if (audioConfig !== undefined) {
         audioConfig.loudnessDb = null;
@@ -1096,7 +1127,7 @@
     if (items instanceof Array){
       const blockCh = { menuServiceItemRenderer: { text: { runs: [{ text: 'Block Channel' }] }, icon: {iconType: "NOT_INTERESTED"} } };
       const blockVid = { menuServiceItemRenderer: { text: { runs: [{ text: 'Block Video' }] }, icon: {iconType: "NOT_INTERESTED"} } };
-      if (storageData.options.block_feedback)
+      if (sd.options.block_feedback)
         items.forEach((e) => {
           if (getObjectByPath(e, 'menuServiceItemRenderer.icon.iconType') === 'NOT_INTERESTED' && hasVideo) {
             blockVid.menuServiceItemRenderer.serviceEndpoint = JSON.parse(JSON.stringify(e.menuServiceItemRenderer.serviceEndpoint))
@@ -1185,13 +1216,13 @@
     storageData = data;
 
     // Enable JS filtering only if function has something in it
-    if (storageData.options.enable_javascript && storageData.filterData.javascript) {
+    if (sd.options.enable_javascript && sd.filterData.javascript) {
       try {
-        jsFilter = window.eval(storageData.filterData.javascript);
+        jsFilter = window.eval(sd.filterData.javascript);
         if (!(jsFilter instanceof Function)) {
           throw Error("Function not found");
         }
-        jsFilterEnabled = storageData.options.enable_javascript;
+        jsFilterEnabled = sd.options.enable_javascript;
       } catch (e) {
         console.error("Custom function syntax error", e);
         jsFilterEnabled = false;
@@ -1249,7 +1280,7 @@
     }
 
     if (window.btReloadRequired) {
-      window.btExports.openToast("BlockTube was updated, this tab needs to be reloaded to use this function", 5000);
+      window.btExports.openToast("JeeTube was updated, this tab needs to be reloaded to use this function", 5000);
       return;
     }
 
@@ -1346,7 +1377,7 @@
   }
 
   // !! Start
-  console.info('BlockTube Init');
+  console.info('JeeTube Init');
 
   // listen for messages from content script
   window.addEventListener('message', (event) => {
@@ -1360,7 +1391,7 @@
       }
       case 'reloadRequired':
         window.btReloadRequired = true;
-        openToast("BlockTube was updated, Please reload this tab to reactivate it", 15000);
+        openToast("JeeTube was updated, Please reload this tab to reactivate it", 15000);
         break;
       default:
         break;

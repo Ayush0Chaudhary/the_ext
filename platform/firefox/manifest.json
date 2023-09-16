@@ -1,5 +1,5 @@
 {
-  "name": "BlockTube",
+  "name": "JeeTube",
   "version": "{EXT_VERSION}",
   "description": "YouTube™ content blocker",
   "manifest_version": 2,
@@ -13,7 +13,7 @@
   ],
   "web_accessible_resources": ["src/scripts/inject.js"],
   "browser_action": {
-    "default_title": "BlockTube Options",
+    "default_title": "JeeTube Options",
     "default_icon": {
       "16": "assets/icons/16.png",
       "48": "assets/icons/48.png",
@@ -40,6 +40,5 @@
       "gecko": {
           "id": "{58204f8b-01c2-4bbc-98f8-9a90458fd9ef}"
       }
-  },
-  "homepage_url": "https://github.com/amitbl/blocktube"
+  }
 }

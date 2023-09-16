@@ -166,7 +166,7 @@ chrome.storage.local.get('storageData', (data) => {
     //
     // sendStorage() {
     //   window.postMessage({
-    //     from: 'BLOCKTUBE_CONTENT',
+    //     from: '',
     //     type: 'storageData',
     //     data: compiledStorage || globalStorage,
     //   }, document.location.origin);
