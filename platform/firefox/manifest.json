@@ -1,7 +1,7 @@
 {
   "name": "JeeTube",
   "version": "{EXT_VERSION}",
-  "description": "YouTube™ content blocker",
+  "description": "YouTube™ for Jee Student",
   "manifest_version": 2,
   "content_scripts": [
     {
@@ -16,6 +16,7 @@
     "default_title": "JeeTube Options",
     "default_icon": {
       "16": "assets/icons/16.png",
+      "32": "assets/icons/32.png",
       "48": "assets/icons/48.png",
       "128": "assets/icons/128.png"
     }
@@ -35,10 +36,5 @@
     "16": "assets/icons/16.png",
     "48": "assets/icons/48.png",
     "128": "assets/icons/128.png"
-  },
-  "applications": {
-      "gecko": {
-          "id": "{58204f8b-01c2-4bbc-98f8-9a90458fd9ef}"
-      }
   }
 }

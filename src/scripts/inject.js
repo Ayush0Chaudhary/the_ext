@@ -439,10 +439,12 @@
       channelId: [], 
       channelName : [
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(jee)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(maths)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(math)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(physics)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chem)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chemical)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(academy)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i, /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(academy)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(neet)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
       ],
       comment: [],
       javascript : "(video, objectType) => {\n  // Add custom conditions below\n\n  // Custom conditions did not match, do not block\n  return false;\n}",
@@ -483,8 +485,8 @@
     this.object = object;
     this.filterRules = filterRules;
     this.contextMenus = contextMenus;
-    console.log(storageData);
-    console.log(sd);
+    // console.log(storageData);
+    // console.log(sd);
     // here is some sort of filter, will see to it later. {CONFUSED}
     this.filter();
 
@@ -919,7 +921,7 @@
           try {
             return RegExp(v[0], v[1].replace('g', ''));
           } catch (e) {
-            console.error(`RegExp parsing error: /${v[0]}/${v[1]}`);
+            // console.error(`RegExp parsing error: /${v[0]}/${v[1]}`);
             return undefined;
           }
         });
