@@ -510,7 +510,10 @@
     // console.log(storageData);
     // console.log(sd);
     // here is some sort of filter, will see to it later. {CONFUSED}
-    this.filter();
+    if(window.location.pathname === "/watch")
+    {
+      this.filter();
+    }
 
     // `postActions` is an array that contains a list of functions. 
     //
