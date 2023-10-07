@@ -5,13 +5,19 @@
   "manifest_version": 2,
   "content_scripts": [
     {
-      "matches": ["https://www.youtube.com/*"],
-      "js": ["src/scripts/content_script.js"],
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "src/scripts/content_script.js"
+      ],
       "run_at": "document_start",
       "all_frames": true
     }
   ],
-  "web_accessible_resources": ["src/scripts/inject.js"],
+  "web_accessible_resources": [
+    "src/scripts/inject.js"
+  ],
   "browser_action": {
     "default_title": "JeeTube Options",
     "default_icon": {
@@ -27,10 +33,13 @@
   },
   "permissions": [
     "storage",
-    "unlimitedStorage"
+    "unlimitedStorage",
+    "https://www.google.com/*"
   ],
   "background": {
-    "scripts": ["src/scripts/background.js"]
+    "scripts": [
+      "src/scripts/background.js"
+    ]
   },
   "icons": {
     "16": "assets/icons/16.png",
