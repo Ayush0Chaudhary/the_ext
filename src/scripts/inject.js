@@ -438,27 +438,28 @@
     filterData : {
       channelId: [], 
       channelName : [
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(DSA)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(striver)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(love babbar)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(program)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(coding)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(code)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i, 
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(software)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(cpp)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(algo)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(krishna)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(kripalu)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(radha)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(bhajan)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(raam)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(jee)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(math)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(physics)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chem)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chemical)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(academy)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i, 
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(academy)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(nexus)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(neet)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
       ],
       comment: [],
       javascript : "(video, objectType) => {\n  // Add custom conditions below\n\n  // Custom conditions did not match, do not block\n  return false;\n}",
       title: [
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(code)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i, 
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(software)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(cpp)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(jee)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(math)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(physics)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chem)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chemical)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(academy)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i, 
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(academy)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(nexus)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(neet)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
       ],
       vidLength: [null, null],
       videoId: []
@@ -512,7 +513,6 @@
             console.log(sd.filterData.title);
           })
       // }
-
       this.filter();
     }
 
@@ -1234,34 +1234,34 @@
   }
 
   function storageReceived(data) {
-    if (data === undefined) return;
-    transformToRegExp(data);
-    if (data.options.trending) blockTrending(data);
-    if (data.options.mixes) blockMixes(data);
-    if (data.options.shorts) blockShorts(data);
+    // if (data === undefined) return;
+    // transformToRegExp(data);
+    // if (data.options.trending) blockTrending(data);
+    // if (data.options.mixes) blockMixes(data);
+    // if (data.options.shorts) blockShorts(data);
 
-    const shouldStartHook = (storageData === undefined);
-    storageData = data;
+    // const shouldStartHook = (storageData === undefined);
+    // storageData = data;
 
-    // Enable JS filtering only if function has something in it
-    if (sd.options.enable_javascript && sd.filterData.javascript) {
-      try {
-        jsFilter = window.eval(sd.filterData.javascript);
-        if (!(jsFilter instanceof Function)) {
-          throw Error("Function not found");
-        }
-        jsFilterEnabled = sd.options.enable_javascript;
-      } catch (e) {
-        console.error("Custom function syntax error", e);
-        jsFilterEnabled = false;
-      }
-    } else {
-      jsFilterEnabled = false;
-    }
+    // // Enable JS filtering only if function has something in it
+    // if (sd.options.enable_javascript && sd.filterData.javascript) {
+    //   try {
+    //     jsFilter = window.eval(sd.filterData.javascript);
+    //     if (!(jsFilter instanceof Function)) {
+    //       throw Error("Function not found");
+    //     }
+    //     jsFilterEnabled = sd.options.enable_javascript;
+    //   } catch (e) {
+    //     console.error("Custom function syntax error", e);
+    //     jsFilterEnabled = false;
+    //   }
+    // } else {
+    //   jsFilterEnabled = false;
+    // }
 
-    if (shouldStartHook) {
+    // if (shouldStartHook) {
       startHook();
-    }
+    // }
   }
 
   function openToast(msg, duration) {
