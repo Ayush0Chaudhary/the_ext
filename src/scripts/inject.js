@@ -442,9 +442,7 @@
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(math)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(physics)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chem)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chemical)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(academy)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i, 
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(academy)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(acad)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i, 
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(nexus)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(neet)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
       ],
@@ -455,9 +453,7 @@
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(math)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(physics)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chem)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chemical)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(academy)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i, 
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(academy)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(acad)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(nexus)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
         /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(neet)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
       ],
@@ -500,22 +496,28 @@
     // here is some sort of filter, will see to it later. {CONFUSED}
     if(window.location.pathname === "/watch")
     {
-      console.log(sd.filterData.title);
-          fetch('http://127.0.0.1:5000/key/words').then(r => r.text()).then(result => {
+      // console.log(sd.filterData.title);
+          fetch('http://ayush0chaudhary.pythonanywhere.com/filters').then(r => r.text()).then(result => {
             const dt = JSON.parse(result);
-            console.log(dt["title"].length);
-            for (let i = 0; i < dt.length; i++) {
-              const regexInString = dt.title[0];
-              const unescapedRegexString = regexInString.regex.slice(1, -1); 
-              const temp = new RegExp(unescapedRegexString);
-              sd.filterData.title.push(temp)
+            // console.log(dt.length);
+            // console.log(dt["title"].length);
+            sd.filterData.title.length = 0;
+            sd.filterData.channelName.length = 0;
+            for (let i = 0; i < dt.title.length; i++) {
+              const regexInString = dt.title[i];
+              console.log(regexInString);
+              const flags = "i";
+              // const unescapedRegexString = regexInString.regex.slice(1, -1); 
+              const temp = new RegExp(regexInString, flags);
+              console.log(temp);
+              sd.filterData.title.push(temp);
             }
             console.log(sd.filterData.title);
+          }).catch((e) {
+            console.log(e.message);
           })
-      // }
       this.filter();
     }
-
     // `postActions` is an array that contains a list of functions. 
     //
     // These functions are intended to be executed as post-processing actions after some operation, 
