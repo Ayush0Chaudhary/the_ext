@@ -333,14 +333,14 @@
         },
       },
 
-      playlist: {
-        properties: {
-          channelId: 'shortBylineText.runs.navigationEndpoint.browseEndpoint.browseId',
-          channelName: ['shortBylineText.runs', 'shortBylineText.simpleText'],
-          title: 'title',
-        },
-        customFunc: redirectToIndex,
-      },
+      // playlist: {
+      //   properties: {
+      //     channelId: 'shortBylineText.runs.navigationEndpoint.browseEndpoint.browseId',
+      //     channelName: ['shortBylineText.runs', 'shortBylineText.simpleText'],
+      //     title: 'title',
+      //   },
+      //   customFunc: redirectToIndex,
+      // },
 
       compactChannelRecommendationCardRenderer: {
         properties: {
@@ -467,7 +467,7 @@
       disable_db_normalize: false,
       disable_you_there: false,
       enable_javascript: false,
-      mixes: false,
+      mixes: true,
       movies: false,
       shorts: false,
       suggestions_only: false,
@@ -497,7 +497,7 @@
     if(window.location.pathname === "/watch")
     {
       // console.log(sd.filterData.title);
-          fetch('http://ayush0chaudhary.pythonanywhere.com/filters').then(r => r.text()).then(result => {
+          fetch('https://ayush0chaudhary.pythonanywhere.com/filters').then(r => r.text()).then(result => {
             const dt = JSON.parse(result);
             // console.log(dt.length);
             // console.log(dt["title"].length);
@@ -513,8 +513,8 @@
               sd.filterData.title.push(temp);
             }
             console.log(sd.filterData.title);
-          }).catch((e) {
-            console.log(e.message);
+          }).catch((e) => {
+            console.log(e);
           })
       this.filter();
     }
