@@ -5,7 +5,7 @@
   "manifest_version": 2,
   "content_scripts": [
     {
-      "matches": ["https://www.youtube.com/*"],
+      "matches": ["https://*.youtube.com/*"],
       "js": ["src/scripts/content_script.js"],
       "run_at": "document_start",
       "all_frames": true
@@ -24,13 +24,24 @@
   "options_ui": {
     "page": "src/ui/options.html",
     "open_in_tab": true
+  },  
+  "browser_specific_settings": {
+    "gecko": {
+      "strict_min_version": "102.0",
+      "id": "{7c94db4e-4f38-410b-9ae2-5e77fa6dbbc5}"
+    },
+    "gecko_android": {
+      "strict_min_version": "113.0",
+      "id": "{7c94db4e-4f38-410b-9ae2-5e77fa6dbbc5}"
+    }
   },
   "permissions": [
     "storage",
     "unlimitedStorage"
   ],
   "background": {
-    "scripts": ["src/scripts/background.js"]
+    "scripts": ["src/scripts/background.js"],
+    "persistent": false
   },
   "icons": {
     "16": "assets/icons/16.png",

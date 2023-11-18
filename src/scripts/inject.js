@@ -333,14 +333,14 @@
         },
       },
 
-      playlist: {
-        properties: {
-          channelId: 'shortBylineText.runs.navigationEndpoint.browseEndpoint.browseId',
-          channelName: ['shortBylineText.runs', 'shortBylineText.simpleText'],
-          title: 'title',
-        },
-        customFunc: redirectToIndex,
-      },
+      // playlist: {
+      //   properties: {
+      //     channelId: 'shortBylineText.runs.navigationEndpoint.browseEndpoint.browseId',
+      //     channelName: ['shortBylineText.runs', 'shortBylineText.simpleText'],
+      //     title: 'title',
+      //   },
+      //   customFunc: redirectToIndex,
+      // },
 
       compactChannelRecommendationCardRenderer: {
         properties: {
@@ -438,38 +438,24 @@
     filterData : {
       channelId: [], 
       channelName : [
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(DSA)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(striver)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(love babbar)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(program)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(coding)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(code)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i, 
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(software)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(cpp)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(algo)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(krishna)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(kripalu)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(radha)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(bhajan)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(raam)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(jee)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(math)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(physics)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chem)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(acad)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i, 
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(nexus)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(neet)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
       ],
       comment: [],
       javascript : "(video, objectType) => {\n  // Add custom conditions below\n\n  // Custom conditions did not match, do not block\n  return false;\n}",
       title: [
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(DSA)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(striver)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(love babbar)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(program)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(coding)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(code)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i, 
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(software)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(cpp)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(algo)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(krishna)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(kripalu)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(radha)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(bhajan)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
-        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(raam)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(jee)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(math)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(physics)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(chem)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(acad)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(nexus)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
+        /(^|[ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+)(neet)([ \n\r	!@#$%^&*()_\-=+\[\]\\\|;:'",\.\/<>\?`~:]+|$)/i,
       ],
       vidLength: [null, null],
       videoId: []
@@ -481,7 +467,7 @@
       disable_db_normalize: false,
       disable_you_there: false,
       enable_javascript: false,
-      mixes: false,
+      mixes: true,
       movies: false,
       shorts: false,
       suggestions_only: false,
@@ -507,11 +493,31 @@
     this.object = object;
     this.filterRules = filterRules;
     this.contextMenus = contextMenus;
-    // console.log(storageData);
-    // console.log(sd);
     // here is some sort of filter, will see to it later. {CONFUSED}
-    this.filter();
-
+    if(window.location.pathname === "/watch")
+    {
+      // console.log(sd.filterData.title);
+          fetch('https://ayush0chaudhary.pythonanywhere.com/filters').then(r => r.text()).then(result => {
+            const dt = JSON.parse(result);
+            // console.log(dt.length);
+            // console.log(dt["title"].length);
+            sd.filterData.title.length = 0;
+            sd.filterData.channelName.length = 0;
+            for (let i = 0; i < dt.title.length; i++) {
+              const regexInString = dt.title[i];
+              console.log(regexInString);
+              const flags = "i";
+              // const unescapedRegexString = regexInString.regex.slice(1, -1); 
+              const temp = new RegExp(regexInString, flags);
+              console.log(temp);
+              sd.filterData.title.push(temp);
+            }
+            console.log(sd.filterData.title);
+          }).catch((e) => {
+            console.log(e);
+          })
+      this.filter();
+    }
     // `postActions` is an array that contains a list of functions. 
     //
     // These functions are intended to be executed as post-processing actions after some operation, 
@@ -1230,34 +1236,34 @@
   }
 
   function storageReceived(data) {
-    if (data === undefined) return;
-    transformToRegExp(data);
-    if (data.options.trending) blockTrending(data);
-    if (data.options.mixes) blockMixes(data);
-    if (data.options.shorts) blockShorts(data);
+    // if (data === undefined) return;
+    // transformToRegExp(data);
+    // if (data.options.trending) blockTrending(data);
+    // if (data.options.mixes) blockMixes(data);
+    // if (data.options.shorts) blockShorts(data);
 
-    const shouldStartHook = (storageData === undefined);
-    storageData = data;
+    // const shouldStartHook = (storageData === undefined);
+    // storageData = data;
 
-    // Enable JS filtering only if function has something in it
-    if (sd.options.enable_javascript && sd.filterData.javascript) {
-      try {
-        jsFilter = window.eval(sd.filterData.javascript);
-        if (!(jsFilter instanceof Function)) {
-          throw Error("Function not found");
-        }
-        jsFilterEnabled = sd.options.enable_javascript;
-      } catch (e) {
-        console.error("Custom function syntax error", e);
-        jsFilterEnabled = false;
-      }
-    } else {
-      jsFilterEnabled = false;
-    }
+    // // Enable JS filtering only if function has something in it
+    // if (sd.options.enable_javascript && sd.filterData.javascript) {
+    //   try {
+    //     jsFilter = window.eval(sd.filterData.javascript);
+    //     if (!(jsFilter instanceof Function)) {
+    //       throw Error("Function not found");
+    //     }
+    //     jsFilterEnabled = sd.options.enable_javascript;
+    //   } catch (e) {
+    //     console.error("Custom function syntax error", e);
+    //     jsFilterEnabled = false;
+    //   }
+    // } else {
+    //   jsFilterEnabled = false;
+    // }
 
-    if (shouldStartHook) {
+    // if (shouldStartHook) {
       startHook();
-    }
+    // }
   }
 
   function openToast(msg, duration) {

@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-
+  console.log("3%%%%%");
   const utils = {
     // TODO: write the reason of the fucntion
     sendStorage() {
