@@ -480,7 +480,7 @@
   //
   // here the author made a constructor function, which take below args and 
   function ObjectFilter(object, filterRules, postActions = [], contextMenus = false) {
-
+    console.log("YouOUOPYOIY$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4444");
     // `this` (the object being constructed) 
 
     // ensure that the constructor is called with the new keyword, warna kabhi kabhi gand lagg jaati h
@@ -493,6 +493,8 @@
     this.object = object;
     this.filterRules = filterRules;
     this.contextMenus = contextMenus;
+    console.log(window.location.pathname)
+
     // here is some sort of filter, will see to it later. {CONFUSED}
     if(window.location.pathname === "/watch")
     {
@@ -516,7 +518,12 @@
           }).catch((e) => {
             console.log(e);
           })
-      this.filter();
+      console.log(window.location.pathname);
+      this.filter();    
+
+    }else if(window.location.pathname.startsWith("/shorts")){
+      console.log("alalallalalalallalaalalal");
+      redirectToIndex()
     }
     // `postActions` is an array that contains a list of functions. 
     //
